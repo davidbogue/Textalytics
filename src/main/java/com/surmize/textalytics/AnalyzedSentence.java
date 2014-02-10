@@ -43,7 +43,37 @@ public class AnalyzedSentence {
         if(getEntities() == null){
             setEntities( new ArrayList<NamedEntity>());
         }
-        getEntities().add(entity);
+        if (isPartOfPreviousEntity(entity)){
+            mergeEntity(entity);
+        }
+        else{
+            getEntities().add(entity);
+        }
     }
 
+    private boolean isPartOfPreviousEntity(NamedEntity entity){
+        int lastEntityIndex = getEntities().size()-1;
+        if(lastEntityIndex >=0 ){
+            NamedEntity previousEntity = getEntities().get(lastEntityIndex);
+            int previousEnd = previousEntity.getOffsetEnd();
+            int entityBegin = entity.getOffsetBegin();
+
+            if(entityBegin - previousEnd <= 1){
+                return previousEntity.getType().equals( entity.getType() );
+            }
+        }
+        return false;
+    }
+
+    private void mergeEntity(NamedEntity entity){
+        NamedEntity previousEntity = getEntities().get( getEntities().size()-1 );
+        StringBuilder sb = new StringBuilder(previousEntity.getText());
+        int offsetSpace = entity.getOffsetBegin() - previousEntity.getOffsetEnd();
+        if(offsetSpace == 1){
+            sb.append(" ");
+        }
+        sb.append(entity.getText());
+        previousEntity.setText(sb.toString());
+        previousEntity.setOffsetEnd(entity.getOffsetEnd());
+    }
 }
