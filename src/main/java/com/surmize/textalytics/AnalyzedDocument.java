@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AnalyzedDocument {
-    List<AnalyzedSentence> sentences;
-    int sentiment;
+    private List<AnalyzedSentence> sentences;
+    private int sentiment;
 
     public int getSentiment() {
         return sentiment;
