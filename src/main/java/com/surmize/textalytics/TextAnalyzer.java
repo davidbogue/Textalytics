@@ -16,7 +16,7 @@ import static edu.stanford.nlp.ling.CoreAnnotations.*;
 
 public class TextAnalyzer {
 
-    StanfordCoreNLP pipeline;
+    private StanfordCoreNLP pipeline;
 
     public TextAnalyzer() {
         // creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution

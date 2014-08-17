@@ -1,10 +1,10 @@
 package com.surmize.textalytics;
 
 public class NamedEntity {
-    String text;
-    int offsetBegin = 0;
-    int offsetEnd = 0;
-    String type;
+    private String text;
+    private int offsetBegin = 0;
+    private int offsetEnd = 0;
+    private String type;
 
 
     public NamedEntity(String text) {
