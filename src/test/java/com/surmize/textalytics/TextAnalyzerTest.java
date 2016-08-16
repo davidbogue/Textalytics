@@ -37,6 +37,8 @@ public class TextAnalyzerTest{
                 }
             }
         }
+
+        System.out.println("Document Sentiment: "+doc.getSentiment());
     }
 
 

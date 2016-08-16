@@ -72,7 +72,7 @@ public class TextAnalyzer {
         }
 
         // this is the parse tree of the current sentence
-        Tree sentimentTree = sentence.get(SentimentCoreAnnotations.AnnotatedTree.class);
+        Tree sentimentTree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
         int sentiment = RNNCoreAnnotations.getPredictedClass(sentimentTree);
         analyzedSentence.setSentiment(sentiment);
         return analyzedSentence;
